@@ -1,10 +1,22 @@
+import os
+import tempfile
 import streamlit as st
+
+# Hugging Face Spaces specific configuration
+os.environ['STREAMLIT_BROWSER_GATHER_USAGE_STATS'] = 'false'
+os.environ['STREAMLIT_SERVER_HEADLESS'] = 'true'
+os.environ['STREAMLIT_SERVER_PORT'] = '7860'
+
+# Use temp directory for any config files
+temp_dir = tempfile.gettempdir()
+os.environ['HOME'] = temp_dir
+import streamlit as st
+
 import cv2
 import numpy as np
 import os
 import sys
 from ultralytics import YOLO
-
 # --- Python Path Debugging Info (will appear in Streamlit sidebar) ---
 # This section helps in diagnosing ModuleNotFoundError by showing Python's
 # search paths. You can remove it once your app runs successfully.
